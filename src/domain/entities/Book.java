@@ -13,5 +13,7 @@ public class Book extends CollectionItem {
         this.publishing = publishing;
     }
 
-
+    public static Book createBook(String description, String author, String publishing) {
+        return new Book(description, author, publishing);
+    }
 }
