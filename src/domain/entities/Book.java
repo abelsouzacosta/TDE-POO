@@ -3,13 +3,13 @@ package domain.entities;
 import java.util.Date;
 
 public class Book extends CollectionItem {
-    protected final String publishing;
+    private final String publishing;
 
-    protected final int pages;
+    private final int pages;
 
-    protected final String language;
+    private final String language;
 
-    protected final Date publishingDate;
+    private final Date publishingDate;
 
     public Book(String description, String author, String publishing, String language, Date publishingDate, int pages) {
         super(description, author);
@@ -20,6 +20,8 @@ public class Book extends CollectionItem {
     }
 
     // TODO: Change publishingDate to receive a String and then instantiate a date
+    // TODO: create a Date factory
+    // TODO: create a date string validator
     public static Book createBook(String description, String author, String publishing, String language, Date publishingDate, int pages) {
         return new Book(description, author, publishing, language, publishingDate, pages);
     }
