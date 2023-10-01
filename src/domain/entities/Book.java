@@ -1,19 +1,42 @@
 package domain.entities;
 
-public class Book extends CollectionItem {
-    protected String publishing;
+import java.util.Date;
 
-    public Book(String description, String author, String publishing) {
+public class Book extends CollectionItem {
+    protected final String publishing;
+
+    protected final int pages;
+
+    protected final String language;
+
+    protected final Date publishingDate;
+
+    public Book(String description, String author, String publishing, String language, Date publishingDate, int pages) {
         super(description, author);
         this.publishing = publishing;
-        this.publishing = publishing;
+        this.pages = pages;
+        this.language = language;
+        this.publishingDate = publishingDate;
     }
 
-    protected void setPublishing(String publishing) {
-        this.publishing = publishing;
+    // TODO: Change publishingDate to receive a String and then instantiate a date
+    public static Book createBook(String description, String author, String publishing, String language, Date publishingDate, int pages) {
+        return new Book(description, author, publishing, language, publishingDate, pages);
     }
 
-    public static Book createBook(String description, String author, String publishing) {
-        return new Book(description, author, publishing);
+    protected String getPublishing() {
+        return this.publishing;
+    }
+
+    protected String getLanguage() {
+        return this.language;
+    }
+
+    protected int getPages() {
+        return this.pages;
+    }
+
+    protected Date getPublishingDate() {
+        return this.publishingDate;
     }
 }
