@@ -2,43 +2,21 @@ package domain.entities;
 
 import java.util.Random;
 
-public class CollectionItem {
-
+public abstract class CollectionItem {
     Random random = new Random();
     private final int id;
+    private final String description;
+    private final Author author;
 
-    private String description;
-
-    /**
-     * TODO: Author can be turned into a class
-     */
-    private String author;
-
-    public CollectionItem(String description, String author) {
-        int min = 1;
-        int max = 100;
-        this.id = random.nextInt(max - min + 1) + min;
+    protected CollectionItem(String description, Author author) {
+        this.id = random.nextInt(100) + 1;
         this.description = description;
         this.author = author;
     }
 
-    protected int getId() {
-        return this.id;
-    }
+    protected int getId() { return this.id; }
 
-    protected String getDescription() {
-        return this.description;
-    }
+    protected String getDescription() { return this.description; }
 
-    protected String getAuthor() {
-        return this.author;
-    }
-
-    protected void setDescription(String description) {
-        this.description = description;
-    }
-
-    protected void setAuthor(String author) {
-        this.author = author;
-    }
+    protected Author getAuthor() { return this.author; }
 }

@@ -1,44 +1,42 @@
 package domain.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public class Book extends CollectionItem {
-    private final String publishing;
+
+public final class Book extends CollectionItem {
+    private final String publisher;
 
     private final int pages;
 
     private final String language;
 
-    private final Date publishingDate;
+    private final LocalDate publishingDate;
 
-    public Book(String description, String author, String publishing, String language, Date publishingDate, int pages) {
+    private Book(String publisher, int pages, String language, LocalDate publishingDate, String description, Author author) {
         super(description, author);
-        this.publishing = publishing;
+        this.publisher = publisher;
         this.pages = pages;
         this.language = language;
         this.publishingDate = publishingDate;
     }
 
-    // TODO: Change publishingDate to receive a String and then instantiate a date
-    // TODO: create a Date factory
-    // TODO: create a date string validator
-    public static Book createBook(String description, String author, String publishing, String language, Date publishingDate, int pages) {
-        return new Book(description, author, publishing, language, publishingDate, pages);
+    public static Book getInstance(String publisher, int pages, String language, LocalDate publishingDate, String description, Author author) {
+        return new Book(publisher, pages, language, publishingDate, description, author);
     }
 
-    protected String getPublishing() {
-        return this.publishing;
+    public String getPublisher() {
+        return publisher;
     }
 
-    protected String getLanguage() {
-        return this.language;
+    public int getPages() {
+        return pages;
     }
 
-    protected int getPages() {
-        return this.pages;
+    public String getLanguage() {
+        return language;
     }
 
-    protected Date getPublishingDate() {
-        return this.publishingDate;
+    public LocalDate getPublishingDate() {
+        return publishingDate;
     }
 }
